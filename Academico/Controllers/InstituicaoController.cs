@@ -35,5 +35,7 @@ namespace Academico.Controllers
             instituicoes.Add(instituicao);
             return RedirectToAction("Index");
         }
+
+
     }
 }
