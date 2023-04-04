@@ -44,12 +44,31 @@ namespace Academico.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
+
         public IActionResult  Edit(Instituicao instituicao)
         {
             instituicoes.Remove(instituicoes.Where(i =>i.Id == instituicao.Id).First());
             instituicoes.Add(instituicao);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Details(long id)
+        {
+            return View(instituicoes.Where(i =>i.Id == id).First());
+        }
+        public IActionResult Delete(long id)
+        {
+            return View(instituicoes.Where(i =>i.Id == id).First());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Instituicao instituicao)
+        {
+            instituicoes.Remove(instituicoes.Where(i => i.Id == instituicao.Id).First());
+            return RedirectToAction("Index");
+        }
+
 
     }
 }
